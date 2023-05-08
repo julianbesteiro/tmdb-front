@@ -1,4 +1,4 @@
-function Item({ movie, i }) {
+function Item({ movie, i, addToFavorites }) {
   const imageRoute = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
   return (
@@ -7,6 +7,14 @@ function Item({ movie, i }) {
 
       <div>
         <span>{movie.title}</span>
+        <p
+          onClick={(e) => {
+            e.preventDefault();
+            addToFavorites(movie.id);
+          }}
+        >
+          <u>Add to favorites</u>
+        </p>
         <img src={movie.poster_path ? imageRoute : " "} alt="Movie poster" />
       </div>
     </div>

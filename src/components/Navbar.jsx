@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedInUser } from "../store/loggedInUser";
+import { setLoggedInUser } from "../store/user";
 import { useEffect } from "react";
 
 function Navbar() {
   const navigate = useNavigate();
-  const loggedInUser = useSelector((state) => state.loggedInUser);
+  const loggedInUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const userToDisplay = loggedInUser.user;
@@ -34,8 +34,6 @@ function Navbar() {
       .then((res) => dispatch(setLoggedInUser(res.data)))
       .catch(() => console.error("You are not logged in"));
   }, []);
-
-  console.log("USERTODISPLAY", userToDisplay);
 
   return (
     <>

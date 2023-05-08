@@ -24,7 +24,7 @@ const Signup = () => {
         password: password.value,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("USER SIGNED UP", res.data);
         navigate("/");
       })
       .catch((err) => console.log(err));

@@ -2,15 +2,14 @@ import useInput from "../hooks/useInput";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setLoggedInUser } from "../store/loggedInUser";
+import { setLoggedInUser } from "../store/user";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const password = useInput();
-
   const email = useInput();
+  const password = useInput();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +19,7 @@ const Login = () => {
         password: password.value,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("USER LOGGED IN", res.data);
         dispatch(setLoggedInUser(res.data));
         navigate("/");
       })
