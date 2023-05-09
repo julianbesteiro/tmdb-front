@@ -22,7 +22,7 @@ function ListItem({ content, type }) {
         favorites: favorites,
         email: user.email,
       })
-      .then((res) => console.log("FAVS updated", res.data))
+      .then((res) => console.log("Favorites updated", res.data))
       .catch((error) => console.log(error));
   }, [favorites]);
 
@@ -30,7 +30,7 @@ function ListItem({ content, type }) {
     <div className="columns is-multiline layout">
       {content.map((content, i) => (
         <div className="column is-4" key={i}>
-          <Link to={`/${type}/${content.id}`}>
+          <Link to={`/detail/${type}/${content.id}`}>
             <Item
               content={content}
               i={i}

@@ -18,28 +18,11 @@ function Sidebar() {
   const movieFavorites = favoritesForFilter("m");
   const tvFavorites = favoritesForFilter("t");
 
-  console.log("TV FAV", tvFavorites);
-
   const removeFromFavorites = (fav, type) => {
-    console.log("REMOVE FROM FAVS EXECUTED");
-    console.log("FAV TO REMOVE", fav, " FAVS ", favorites);
-
     const contentForDispatch = `${type}${fav}`;
 
     dispatch(removeFromFavoritesDispatch(contentForDispatch));
   };
-
-  // useEffect(() => {
-  //   axios
-  //     .put("/api/removefromfavorites", {
-  //       favorites: user.favorites,
-  //       email: user.email,
-  //     })
-  //     .then((res) => console.log("FAVS updated", res.data))
-  //     .catch((error) => console.log(error));
-  // }, [favorites]);
-
-  console.log("FAVORITES", favorites);
 
   return (
     <div>

@@ -19,7 +19,7 @@ const Login = () => {
         password: password.value,
       })
       .then((res) => {
-        console.log("USER LOGGED IN", res.data);
+        console.log("User logged in", res.data);
         dispatch(setLoggedInUser(res.data));
         navigate("/");
       })

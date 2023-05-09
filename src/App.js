@@ -1,7 +1,5 @@
-//import "./App.css";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-//import Content from "./components/Content";
 import Search from "./components/Search";
 import { Route, Routes } from "react-router";
 import Card from "./commons/Card";
@@ -32,7 +30,7 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             <Route
-              path="/:type/:contentId"
+              path="/detail/:type/:contentId"
               element={<Card content={content} />}
             />
             <Route path="/users/:username" element={<UserFavorites />} />

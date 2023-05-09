@@ -5,7 +5,7 @@ import Users from "../commons/Users";
 
 function SearchUsers() {
   const search = useInput();
-  const [searchedUser, setSearchedUser] = useState();
+  const [searchedUser, setSearchedUser] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
