@@ -10,20 +10,21 @@ function Sidebar() {
   const user = useSelector((state) => state.user);
   const favorites = user.favorites || [];
 
-  const removeFromFavorites = (id) => {
-    console.log("REMOVE FROM FAVS");
-    dispatch(removeFromFavoritesDispatch(id));
+  const removeFromFavorites = (fav) => {
+    console.log("REMOVE FROM FAVS EXECUTED");
+    console.log("FAV TO REMOVE", fav, " FAVS ", favorites);
+    dispatch(removeFromFavoritesDispatch(fav));
   };
 
-  useEffect(() => {
-    axios
-      .put("/api/removefromfavorites", {
-        favorites: user.favorites,
-        email: user.email,
-      })
-      .then((res) => console.log("FAVS updated", res.data))
-      .catch((error) => console.log(error));
-  }, [favorites]);
+  // useEffect(() => {
+  //   axios
+  //     .put("/api/removefromfavorites", {
+  //       favorites: user.favorites,
+  //       email: user.email,
+  //     })
+  //     .then((res) => console.log("FAVS updated", res.data))
+  //     .catch((error) => console.log(error));
+  // }, [favorites]);
 
   console.log("FAVORITES", favorites);
 
@@ -32,7 +33,7 @@ function Sidebar() {
       <h1>THESE ARE YOUR FAVORITES</h1>
 
       {favorites.length === 0 ? (
-        ""
+        "No favorites added"
       ) : (
         <div>
           {favorites.map((fav, i) => (

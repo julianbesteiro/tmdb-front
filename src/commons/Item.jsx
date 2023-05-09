@@ -10,7 +10,7 @@ function Item({ movie, i, addToFavorites }) {
         <p
           onClick={(e) => {
             e.preventDefault();
-            addToFavorites(movie.id);
+            addToFavorites(movie.title, movie.id);
           }}
         >
           <u>Add to favorites</u>

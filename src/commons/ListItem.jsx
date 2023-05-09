@@ -9,16 +9,17 @@ import { useEffect } from "react";
 function ListItem({ movies }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const favorites = user.favorites;
+  const favorites = user.favorites || [];
 
-  const addToFavorites = (id) => {
-    dispatch(addToFavoritesDispatch(id));
+  const addToFavorites = (title, id) => {
+    let newFav = `${title} (ID ${id})`;
+    dispatch(addToFavoritesDispatch(newFav));
   };
 
   useEffect(() => {
     axios
       .put("/api/addtofavorites", {
-        favorites: user.favorites,
+        favorites: favorites,
         email: user.email,
       })
       .then((res) => console.log("FAVS updated", res.data))

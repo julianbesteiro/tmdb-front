@@ -11,6 +11,7 @@ function Navbar() {
   const dispatch = useDispatch();
 
   const userToDisplay = loggedInUser.user;
+
   const handleClick = () => {
     axios
       .post("/api/logout")
@@ -42,6 +43,9 @@ function Navbar() {
           <p>Navbar</p>
           <Link to="/search">
             <button>SEARCH MOVIES</button>
+          </Link>
+          <Link to="/search">
+            <button>SEARCH TV SHOWS</button>
           </Link>
           {userToDisplay ? (
             <div>

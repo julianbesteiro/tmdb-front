@@ -15,11 +15,13 @@ export default createReducer(initialState, {
       console.error("You need to be logged in to add items to favorites");
       return state;
     }
+
     if (state.favorites.find((fav) => fav === action.payload)) {
       console.error("Item already in favorites");
       return state;
     }
     console.log("Item added to favorites");
+
     return { ...state, favorites: [...state.favorites, action.payload] };
   },
   [removeFromFavoritesDispatch]: (state, action) => {
