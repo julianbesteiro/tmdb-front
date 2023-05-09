@@ -41,11 +41,14 @@ function Navbar() {
       <div>
         <div className="container is-fluid columns">
           <p>Navbar</p>
-          <Link to="/search">
+          <Link to="/search/movie">
             <button>SEARCH MOVIES</button>
           </Link>
-          <Link to="/search">
+          <Link to="/search/tv">
             <button>SEARCH TV SHOWS</button>
+          </Link>
+          <Link to="/searchusers">
+            <button>SEARCH USERS</button>
           </Link>
           {userToDisplay ? (
             <div>

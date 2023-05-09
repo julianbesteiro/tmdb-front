@@ -6,13 +6,13 @@ import axios from "axios";
 import { addToFavoritesDispatch } from "../store/user";
 import { useEffect } from "react";
 
-function ListItem({ movies }) {
+function ListItem({ content, type }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const favorites = user.favorites || [];
 
-  const addToFavorites = (title, id) => {
-    let newFav = `${title} (ID ${id})`;
+  const addToFavorites = (contentTitle, id) => {
+    let newFav = `${type[0]}${contentTitle} (ID ${id})`;
     dispatch(addToFavoritesDispatch(newFav));
   };
 
@@ -28,10 +28,15 @@ function ListItem({ movies }) {
 
   return (
     <div className="columns is-multiline layout">
-      {movies.map((movie, i) => (
+      {content.map((content, i) => (
         <div className="column is-4" key={i}>
-          <Link to={`/movie/${movie.id}`}>
-            <Item movie={movie} i={i} addToFavorites={addToFavorites} />
+          <Link to={`/${type}/${content.id}`}>
+            <Item
+              content={content}
+              i={i}
+              addToFavorites={addToFavorites}
+              type={type}
+            />
           </Link>
         </div>
       ))}

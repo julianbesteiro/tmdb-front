@@ -1,9 +1,9 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const setMovies = createAction("SET_MOVIES");
+export const setContent = createAction("SET_CONTENT");
 
 const initialState = [];
 
 export default createReducer(initialState, {
-  [setMovies]: (state, action) => action.payload,
+  [setContent]: (state, action) => action.payload,
 });

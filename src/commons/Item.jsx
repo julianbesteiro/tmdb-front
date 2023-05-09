@@ -1,21 +1,26 @@
-function Item({ movie, i, addToFavorites }) {
-  const imageRoute = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+function Item({ content, i, addToFavorites, type }) {
+  const imageRoute = `https://image.tmdb.org/t/p/w500/${content.poster_path}`;
+
+  const contentTitle = type === "movie" ? content.title : content.name;
 
   return (
     <div>
       <div>{i + 1}</div>
 
       <div>
-        <span>{movie.title}</span>
+        <span>{contentTitle}</span>
         <p
           onClick={(e) => {
             e.preventDefault();
-            addToFavorites(movie.title, movie.id);
+            addToFavorites(contentTitle, content.id);
           }}
         >
           <u>Add to favorites</u>
         </p>
-        <img src={movie.poster_path ? imageRoute : " "} alt="Movie poster" />
+        <img
+          src={content.poster_path ? imageRoute : " "}
+          alt="Content poster"
+        />
       </div>
     </div>
   );

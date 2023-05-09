@@ -10,10 +10,23 @@ function Sidebar() {
   const user = useSelector((state) => state.user);
   const favorites = user.favorites || [];
 
-  const removeFromFavorites = (fav) => {
+  const favoritesForFilter = (str) => {
+    return favorites
+      .filter((element) => element[0] === str)
+      .map((element) => element.slice(1));
+  };
+  const movieFavorites = favoritesForFilter("m");
+  const tvFavorites = favoritesForFilter("t");
+
+  console.log("TV FAV", tvFavorites);
+
+  const removeFromFavorites = (fav, type) => {
     console.log("REMOVE FROM FAVS EXECUTED");
     console.log("FAV TO REMOVE", fav, " FAVS ", favorites);
-    dispatch(removeFromFavoritesDispatch(fav));
+
+    const contentForDispatch = `${type}${fav}`;
+
+    dispatch(removeFromFavoritesDispatch(contentForDispatch));
   };
 
   // useEffect(() => {
@@ -31,17 +44,38 @@ function Sidebar() {
   return (
     <div>
       <h1>THESE ARE YOUR FAVORITES</h1>
+      <h2>MOVIES:</h2>
 
-      {favorites.length === 0 ? (
+      {movieFavorites.length === 0 ? (
         "No favorites added"
       ) : (
         <div>
-          {favorites.map((fav, i) => (
+          {movieFavorites.map((fav, i) => (
             <div className="column is-4" key={i}>
               <Favorites
                 fav={fav}
                 i={i}
                 removeFromFavorites={removeFromFavorites}
+                type="m"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      <h2>TV SHOWS:</h2>
+
+      {tvFavorites.length === 0 ? (
+        "No favorites added"
+      ) : (
+        <div>
+          {tvFavorites.map((fav, i) => (
+            <div className="column is-4" key={i}>
+              <Favorites
+                fav={fav}
+                i={i}
+                removeFromFavorites={removeFromFavorites}
+                type="t"
               />
             </div>
           ))}

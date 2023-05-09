@@ -1,10 +1,10 @@
 import { useParams } from "react-router";
 
-const Card = ({ movies }) => {
-  const { movieId } = useParams();
+const Card = ({ content }) => {
+  const { type, contentId } = useParams();
 
-  const selectedMovie = movies.filter((movie) => {
-    return movie.id === Number(movieId);
+  const selectedContent = content.filter((content) => {
+    return content.id === Number(contentId);
   });
 
   return (
@@ -13,8 +13,12 @@ const Card = ({ movies }) => {
         <div className="media">
           <div className="media-left">
             <div className="media-content">
-              <p className="title is-3">{selectedMovie[0].title}</p>
-              <p className="title is-6">{selectedMovie[0].overview}</p>
+              <p className="title is-3">
+                {type === "movie"
+                  ? selectedContent[0].title
+                  : selectedContent[0].name}
+              </p>
+              <p className="title is-6">{selectedContent[0].overview}</p>
             </div>
           </div>
         </div>

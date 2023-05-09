@@ -9,9 +9,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import SearchUsers from "./components/SearchUsers";
+import UserFavorites from "./commons/UserFavorites";
 
 function App() {
-  const movies = useSelector((state) => state.movies);
+  const content = useSelector((state) => state.content);
 
   return (
     <>
@@ -23,11 +25,17 @@ function App() {
           <Routes>
             <Route path="/" element={<p>Welcome to TMDB!</p>} />
             <Route path="/welcome" element={<p>Welcome to TMDB!</p>} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search/:type" element={<Search />} />
+            <Route path="/searchusers" element={<SearchUsers />} />
+
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
 
-            <Route path="/movie/:movieId" element={<Card movies={movies} />} />
+            <Route
+              path="/:type/:contentId"
+              element={<Card content={content} />}
+            />
+            <Route path="/users/:username" element={<UserFavorites />} />
           </Routes>
         </div>
       </div>
