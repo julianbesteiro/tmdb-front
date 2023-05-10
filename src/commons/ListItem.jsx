@@ -9,22 +9,22 @@ import { useEffect } from "react";
 function ListItem({ content, type }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const favorites = user.favorites || [];
+  // const favorites = user.favorites || [];
 
   const addToFavorites = (contentTitle, id) => {
     let newFav = `${type[0]}${contentTitle} (ID ${id})`;
     dispatch(addToFavoritesDispatch(newFav));
   };
 
-  useEffect(() => {
-    axios
-      .put("/api/addtofavorites", {
-        favorites: favorites,
-        email: user.email,
-      })
-      .then((res) => console.log("Favorites updated", res.data))
-      .catch((error) => console.log(error));
-  }, [favorites]);
+  // useEffect(() => {
+  //   axios
+  //     .put("/api/addtofavorites", {
+  //       favorites: favorites,
+  //       email: user.email,
+  //     })
+  //     .then((res) => console.log("Favorites check"))
+  //     .catch((error) => console.log(error));
+  // }, [favorites]);
 
   return (
     <div className="columns is-multiline layout">

@@ -40,7 +40,10 @@ function Navbar() {
     <>
       <div>
         <div className="container is-fluid columns">
-          <p>Navbar</p>
+          <Link to="/">
+            <h2>TMDB</h2>
+          </Link>
+
           <Link to="/search/movie">
             <button>SEARCH MOVIES</button>
           </Link>
@@ -48,7 +51,7 @@ function Navbar() {
             <button>SEARCH TV SHOWS</button>
           </Link>
           <Link to="/searchusers">
-            <button>SEARCH USERS</button>
+            <button>SEARCH OTHER USERS</button>
           </Link>
           {userToDisplay ? (
             <div>

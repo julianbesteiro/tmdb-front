@@ -11,11 +11,6 @@ const initialState = {};
 export default createReducer(initialState, {
   [setLoggedInUser]: (state, action) => action.payload,
   [addToFavoritesDispatch]: (state, action) => {
-    if (!state.name) {
-      console.error("You need to be logged in to add items to favorites");
-      return state;
-    }
-
     if (state.favorites.find((fav) => fav === action.payload)) {
       console.error("Item already in favorites");
       return state;

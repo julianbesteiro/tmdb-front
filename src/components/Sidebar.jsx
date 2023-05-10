@@ -24,47 +24,67 @@ function Sidebar() {
     dispatch(removeFromFavoritesDispatch(contentForDispatch));
   };
 
+  useEffect(() => {
+    axios
+      .put("/api/addtofavorites", {
+        favorites: favorites,
+        email: user.email,
+      })
+      .then((res) => console.log("Favorites check"))
+      .catch((error) => console.log(error));
+  }, [favorites]);
+
+  console.log("ESTADO USER LOGGED IN", user);
+
   return (
-    <div>
-      <h1>THESE ARE YOUR FAVORITES</h1>
-      <h2>MOVIES:</h2>
-
-      {movieFavorites.length === 0 ? (
-        "No favorites added"
-      ) : (
+    <>
+      {user.email ? (
         <div>
-          {movieFavorites.map((fav, i) => (
-            <div className="column is-4" key={i}>
-              <Favorites
-                fav={fav}
-                i={i}
-                removeFromFavorites={removeFromFavorites}
-                type="m"
-              />
+          <h2>Favorites</h2>
+
+          <h3>These are your favorites</h3>
+          <h4>Movies</h4>
+
+          {movieFavorites.length === 0 ? (
+            "No favorites added"
+          ) : (
+            <div>
+              {movieFavorites.map((fav, i) => (
+                <div className="column is-4" key={i}>
+                  <Favorites
+                    fav={fav}
+                    i={i}
+                    removeFromFavorites={removeFromFavorites}
+                    type="m"
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          )}
+
+          <h4>TV shows</h4>
+
+          {tvFavorites.length === 0 ? (
+            "No favorites added"
+          ) : (
+            <div>
+              {tvFavorites.map((fav, i) => (
+                <div className="column is-4" key={i}>
+                  <Favorites
+                    fav={fav}
+                    i={i}
+                    removeFromFavorites={removeFromFavorites}
+                    type="t"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      )}
-
-      <h2>TV SHOWS:</h2>
-
-      {tvFavorites.length === 0 ? (
-        "No favorites added"
       ) : (
-        <div>
-          {tvFavorites.map((fav, i) => (
-            <div className="column is-4" key={i}>
-              <Favorites
-                fav={fav}
-                i={i}
-                removeFromFavorites={removeFromFavorites}
-                type="t"
-              />
-            </div>
-          ))}
-        </div>
+        ""
       )}
-    </div>
+    </>
   );
 }
 

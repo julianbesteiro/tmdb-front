@@ -24,7 +24,7 @@ const Signup = () => {
         password: password.value,
       })
       .then((res) => {
-        console.log("User signed up", res.data);
+        console.log("User signed up if it was not in database", res.data);
         navigate("/");
       })
       .catch((err) => console.log(err));

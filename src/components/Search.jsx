@@ -38,7 +38,7 @@ function Search() {
     <>
       <div>
         <div className="container is-fluid columns">
-          <p>Enter something:</p>
+          <p>Enter {type === "tv" ? "TV show" : type} name:</p>
           <form onSubmit={handleSubmit}>
             <label className="label my-3">Search</label>
             <input

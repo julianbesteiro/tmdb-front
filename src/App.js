@@ -4,7 +4,7 @@ import Search from "./components/Search";
 import { Route, Routes } from "react-router";
 import Card from "./commons/Card";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import SearchUsers from "./components/SearchUsers";
@@ -14,30 +14,35 @@ function App() {
   const content = useSelector((state) => state.content);
 
   return (
-    <>
-      <div>
-        <div className="container is-fluid columns">
-          <Navbar />
-          <Sidebar />
-
-          <Routes>
-            <Route path="/" element={<p>Welcome to TMDB!</p>} />
-            <Route path="/welcome" element={<p>Welcome to TMDB!</p>} />
-            <Route path="/search/:type" element={<Search />} />
-            <Route path="/searchusers" element={<SearchUsers />} />
-
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-
-            <Route
-              path="/detail/:type/:contentId"
-              element={<Card content={content} />}
-            />
-            <Route path="/users/:username" element={<UserFavorites />} />
-          </Routes>
-        </div>
+    <div>
+      <div className="mainClass">
+        <Navbar />
+        <Sidebar />
       </div>
-    </>
+      <div className="container is-fluid columns">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <h1>
+                <strong>Welcome!</strong>
+              </h1>
+            }
+          />
+          <Route path="/search/:type" element={<Search />} />
+          <Route path="/searchusers" element={<SearchUsers />} />
+
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+
+          <Route
+            path="/detail/:type/:contentId"
+            element={<Card content={content} />}
+          />
+          <Route path="/users/:username" element={<UserFavorites />} />
+        </Routes>
+      </div>
+    </div>
   );
 }
 
