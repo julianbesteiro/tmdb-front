@@ -10,7 +10,6 @@ function SearchUsers() {
   const loggedInUser = useSelector((state) => state.user);
 
   const handleSubmit = (e) => {
-    console.log("ENTRA");
     e.preventDefault();
     if (search.value === loggedInUser.user) {
       alert("Can't search your own username");

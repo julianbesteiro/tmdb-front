@@ -1,5 +1,5 @@
 import useInput from "../hooks/useInput";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 const Signup = () => {
@@ -26,6 +26,7 @@ const Signup = () => {
       .then((res) => {
         console.log("User signed up if it was not in database", res.data);
         navigate("/");
+        alert("Please login now");
       })
       .catch((err) => console.log(err));
   };

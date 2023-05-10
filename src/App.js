@@ -9,6 +9,8 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import SearchUsers from "./components/SearchUsers";
 import UserFavorites from "./commons/UserFavorites";
+import NotFound from "./commons/NotFound";
+import { Navigate } from "react-router";
 
 function App() {
   const content = useSelector((state) => state.content);
@@ -40,6 +42,9 @@ function App() {
             element={<Card content={content} />}
           />
           <Route path="/users/:username" element={<UserFavorites />} />
+
+          <Route path="404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="404" />} />
         </Routes>
       </div>
     </div>
