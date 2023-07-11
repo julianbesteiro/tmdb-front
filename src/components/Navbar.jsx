@@ -25,6 +25,7 @@ function Navbar() {
   const navigate = useNavigate();
   const loggedInUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
