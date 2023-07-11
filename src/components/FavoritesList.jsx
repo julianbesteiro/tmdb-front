@@ -4,9 +4,8 @@ import { removeFromFavoritesDispatch } from "../store/user";
 import Favorites from "../commons/Favorites";
 import { useEffect } from "react";
 import axios from "axios";
-require("dotenv").config();
 
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function FavoritesList() {
   const dispatch = useDispatch();

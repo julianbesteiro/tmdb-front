@@ -10,9 +10,7 @@ import {
 } from "../store/user";
 import { setContent } from "../store/content";
 
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 const Card = ({ content, user }) => {
   const [uniqueSelectedContent, setUniqueSelectedContent] = useState({});

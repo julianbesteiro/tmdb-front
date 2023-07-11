@@ -4,9 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "../store/user";
 import { Button, TextField } from "@mui/material";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 const Login = () => {
   const navigate = useNavigate();

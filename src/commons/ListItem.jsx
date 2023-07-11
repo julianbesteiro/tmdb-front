@@ -6,9 +6,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 import { Grid } from "@mui/material";
-require("dotenv").config();
 
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function ListItem({ content, type }) {
   const dispatch = useDispatch();

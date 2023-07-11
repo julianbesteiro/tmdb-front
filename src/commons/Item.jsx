@@ -5,9 +5,7 @@ import { removeFromFavoritesDispatch } from "../store/user";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useEffect } from "react";
 import axios from "axios";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function Item({ content, i, addToFavorites, type }) {
   const imageRoute = `https://image.tmdb.org/t/p/w500/${content.poster_path}`;
