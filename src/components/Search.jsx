@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { setContent } from "../store/content";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Search() {
   const search = useInput();
@@ -13,8 +13,11 @@ function Search() {
   const content = useSelector((state) => state.content);
   const { type } = useParams();
 
+  const [searchMade, setSearchMade] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearchMade(true);
 
     axios
       .get(
@@ -36,20 +39,22 @@ function Search() {
 
   return (
     <>
-      <div>
-        <div className="container is-fluid columns">
-          <p>Enter {type === "tv" ? "TV show" : type} name:</p>
-          <form onSubmit={handleSubmit}>
-            <label className="label my-3">Search</label>
-            <input
-              {...search}
-              className="input my-3"
-              type="text"
-              placeholder="Search here"
-            />
-          </form>
-          <ListItem content={content || []} type={type} />
-        </div>
+      <div style={{ margin: "20px" }}>
+        <p>Enter {type === "tv" ? "TV show" : type} name:</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            {...search}
+            className="input my-3"
+            type="text"
+            placeholder="Search here"
+          />
+        </form>
+        {searchMade && content.length === 0 ? (
+          <div>There are no matching records.</div>
+        ) : (
+          ""
+        )}
+        <ListItem content={content || []} type={type} />
       </div>
     </>
   );

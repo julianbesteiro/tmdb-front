@@ -1,6 +1,7 @@
 import useInput from "../hooks/useInput";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { Button, TextField } from "@mui/material";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Signup = () => {
       })
       .then((res) => {
         console.log("User signed up if it was not in database", res.data);
-        navigate("/");
+        navigate("/login");
         alert("Please login now");
       })
       .catch((err) => console.log(err));
@@ -33,23 +34,61 @@ const Signup = () => {
 
   return (
     <>
-      <div>
-        <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-          Create your account
-        </h2>
-      </div>
+      <br />
+      <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+        Create your account
+      </h2>
       <form className="mt-8" onSubmit={handleSubmit}>
-        <input type="text" required placeholder="Name" {...name} />
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          type="text"
+          required
+          {...name}
+          sx={{ marginTop: "10px" }}
+        />
 
-        <input type="text" required placeholder="Surname" {...surname} />
-
-        <input type="text" required placeholder="Username" {...user} />
-
-        <input type="text" required placeholder="Email address" {...email} />
-
-        <input type="text" required placeholder="Password" {...password} />
-
-        <button type="submit">Sign up</button>
+        <TextField
+          id="outlined-basic"
+          label="Surname"
+          variant="outlined"
+          type="text"
+          required
+          {...surname}
+          sx={{ marginTop: "10px" }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Username"
+          variant="outlined"
+          type="text"
+          required
+          {...user}
+          sx={{ marginTop: "10px" }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Email address"
+          variant="outlined"
+          type="email"
+          required
+          {...email}
+          sx={{ marginTop: "10px" }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          type="password"
+          required
+          {...password}
+          sx={{ marginTop: "10px" }}
+        />
+        <br />
+        <Button variant="contained" type="submit" sx={{ marginTop: "10px" }}>
+          SIGN UP
+        </Button>
       </form>
     </>
   );

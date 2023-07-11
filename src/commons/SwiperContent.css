@@ -1,0 +1,19 @@
+.swiper-container {
+  width: 100%;
+  height: 400px;
+  margin: 10px;
+}
+
+.titles {
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

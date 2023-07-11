@@ -28,23 +28,18 @@ function SearchUsers() {
   };
 
   return (
-    <>
-      <div>
-        <div className="container is-fluid columns">
-          <p>Enter another username:</p>
-          <form onSubmit={handleSubmit}>
-            <label className="label my-3">Search</label>
-            <input
-              {...search}
-              className="input my-3"
-              type="text"
-              placeholder="Search here"
-            />
-          </form>
-          <Users searchedUser={searchedUser} />
-        </div>
-      </div>
-    </>
+    <div style={{ margin: "20px" }}>
+      <p>Enter another username:</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          {...search}
+          className="input my-3"
+          type="text"
+          placeholder="Search here"
+        />
+      </form>
+      <Users searchedUser={searchedUser} />
+    </div>
   );
 }
 

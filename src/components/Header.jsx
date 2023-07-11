@@ -2,9 +2,7 @@ function Header() {
   return (
     <>
       <div>
-        <div className="container is-fluid columns">
-          <p>Header</p>
-        </div>
+        <p>Header</p>
       </div>
     </>
   );

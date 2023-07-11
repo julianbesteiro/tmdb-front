@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "../store/user";
+import { Button, TextField } from "@mui/material";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,21 +24,41 @@ const Login = () => {
         dispatch(setLoggedInUser(res.data));
         navigate("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert("Invalid credentials");
+        console.log(err);
+      });
   };
   return (
     <>
-      <div>
-        <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-          LOGIN HERE{" "}
-        </h2>
-      </div>
+      <br />
+      <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+        LOGIN HERE{" "}
+      </h2>
       <form className="mt-8" onSubmit={handleSubmit}>
-        <input type="text" required placeholder="Email address" {...email} />
+        <TextField
+          id="outlined-basic"
+          label="Email address"
+          variant="outlined"
+          type="email"
+          required
+          {...email}
+          sx={{ marginTop: "10px" }}
+        />
 
-        <input type="text" required placeholder="Password" {...password} />
-
-        <button type="submit">LOGIN</button>
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          type="password"
+          required
+          {...password}
+          sx={{ marginTop: "10px" }}
+        />
+        <br />
+        <Button variant="contained" type="submit" sx={{ marginTop: "10px" }}>
+          LOGIN
+        </Button>
       </form>
     </>
   );
