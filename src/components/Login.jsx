@@ -25,8 +25,8 @@ const Login = () => {
         { withCredentials: true, credentials: "include" }
       )
       .then((res) => {
-        console.log("User logged in", res.data);
-        localStorage.setItem("token", res.token);
+        console.log("User logged in", res.data.userFront);
+        localStorage.setItem("token", res.data.token);
         dispatch(setLoggedInUser(res.data));
         navigate("/");
       })
