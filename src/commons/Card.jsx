@@ -137,10 +137,21 @@ const Card = ({ content, user }) => {
             {uniqueSelectedContent.overview}
           </Typography>
 
-          <ImageListItem sx={{ height: "300px", width: "414px" }}>
+          <ImageListItem
+            sx={{
+              height: "300px",
+              width: "100%",
+              maxWidth: "100%",
+              "@media (min-width: 768px)": {
+                width: "414px", // Set a specific width for desktop devices
+                maxWidth: "500px", // Set a maximum width for desktop devices
+              },
+            }}
+          >
             <img
               src={uniqueSelectedContent.poster_path ? imageRoute : ""}
               alt="Content poster"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </ImageListItem>
         </>
