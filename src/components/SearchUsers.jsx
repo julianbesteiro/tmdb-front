@@ -3,6 +3,9 @@ import useInput from "../hooks/useInput";
 import { useState } from "react";
 import Users from "../commons/Users";
 import { useSelector } from "react-redux";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 function SearchUsers() {
   const search = useInput();
@@ -16,7 +19,10 @@ function SearchUsers() {
       return;
     } else {
       axios
-        .get(`/api/users/${search.value}`)
+        .get(`${url}/api/users/${search.value}`, {
+          withCredentials: true,
+          credentials: "include",
+        })
         .then((res) => res.data)
         .then((users) =>
           setSearchedUser(

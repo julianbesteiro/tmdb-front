@@ -4,6 +4,9 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "../store/user";
 import { Button, TextField } from "@mui/material";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,12 +18,17 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/login", {
-        email: email.value,
-        password: password.value,
-      })
+      .post(
+        `${url}/api/login`,
+        {
+          email: email.value,
+          password: password.value,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => {
         console.log("User logged in", res.data);
+        localStorage.setItem("token", res.token);
         dispatch(setLoggedInUser(res.data));
         navigate("/");
       })

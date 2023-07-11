@@ -2,6 +2,9 @@ import useInput from "../hooks/useInput";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Button, TextField } from "@mui/material";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -17,13 +20,17 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/signup", {
-        name: name.value,
-        surname: surname.value,
-        user: user.value,
-        email: email.value,
-        password: password.value,
-      })
+      .post(
+        `${url}/api/signup`,
+        {
+          name: name.value,
+          surname: surname.value,
+          user: user.value,
+          email: email.value,
+          password: password.value,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => {
         console.log("User signed up if it was not in database", res.data);
         navigate("/login");
