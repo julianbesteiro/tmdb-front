@@ -3,6 +3,9 @@ import { useParams } from "react-router";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 function UserFavorites() {
   const { username } = useParams();
@@ -24,7 +27,10 @@ function UserFavorites() {
 
   useEffect(() => {
     axios
-      .get(`/api/userfavorites/${username}`)
+      .get(`${url}/api/userfavorites/${username}`, {
+        withCredentials: true,
+        credentials: "include",
+      })
       .then((favorites) => {
         setFavoritesPerUser(favorites.data);
       })

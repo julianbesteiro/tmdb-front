@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 import { Grid } from "@mui/material";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 function ListItem({ content, type }) {
   const dispatch = useDispatch();
@@ -19,10 +22,14 @@ function ListItem({ content, type }) {
 
   useEffect(() => {
     axios
-      .put("/api/addtofavorites", {
-        favorites: favorites,
-        email: user.email,
-      })
+      .put(
+        `${url}/api/addtofavorites`,
+        {
+          favorites: favorites,
+          email: user.email,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => console.log("Favorites check"))
       .catch((error) => console.log(error));
   }, [favorites]);

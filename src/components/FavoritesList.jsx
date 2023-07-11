@@ -4,6 +4,9 @@ import { removeFromFavoritesDispatch } from "../store/user";
 import Favorites from "../commons/Favorites";
 import { useEffect } from "react";
 import axios from "axios";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 function FavoritesList() {
   const dispatch = useDispatch();
@@ -26,10 +29,14 @@ function FavoritesList() {
 
   useEffect(() => {
     axios
-      .put("/api/addtofavorites", {
-        favorites: favorites,
-        email: user.email,
-      })
+      .put(
+        `${url}/api/addtofavorites`,
+        {
+          favorites: favorites,
+          email: user.email,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => console.log("Favorites check"))
       .catch((error) => console.log(error));
   }, [favorites]);

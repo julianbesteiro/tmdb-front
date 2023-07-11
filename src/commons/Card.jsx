@@ -10,6 +10,10 @@ import {
 } from "../store/user";
 import { setContent } from "../store/content";
 
+require("dotenv").config();
+
+const url = process.env.URL;
+
 const Card = ({ content, user }) => {
   const [uniqueSelectedContent, setUniqueSelectedContent] = useState({});
 
@@ -61,10 +65,14 @@ const Card = ({ content, user }) => {
 
   useEffect(() => {
     axios
-      .put("/api/addtofavorites", {
-        favorites: favorites,
-        email: user.email,
-      })
+      .put(
+        `${url}/api/addtofavorites`,
+        {
+          favorites: favorites,
+          email: user.email,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => console.log("Favorites check"))
       .catch((error) => console.log(error));
   }, [favorites]);

@@ -19,6 +19,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Container } from "@mui/system";
+require("dotenv").config();
+
+const url = process.env.URL;
 
 function Navbar() {
   const navigate = useNavigate();
@@ -32,8 +35,12 @@ function Navbar() {
   const handleClick = () => {
     setDrawerOpen(false);
     axios
-      .post("/api/logout")
+      .post(`${url}/api/logout`, {
+        withCredentials: true,
+        credentials: "include",
+      })
       .then((res) => {
+        localStorage.removeItem("token");
         console.log("User logged out");
         dispatch(
           setLoggedInUser({
@@ -49,10 +56,14 @@ function Navbar() {
 
   useEffect(() => {
     axios
-      .get("/api/me")
+      .get(
+        `${url}/api/me`,
+        { token: localStorage.getItem("token") },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => dispatch(setLoggedInUser(res.data)))
       .catch(() => console.error("You are not logged in"));
-  }, []);
+  }, [token]);
 
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
