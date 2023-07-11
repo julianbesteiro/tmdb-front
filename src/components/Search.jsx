@@ -6,9 +6,7 @@ import { setContent } from "../store/content";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function Search() {
   const search = useInput();

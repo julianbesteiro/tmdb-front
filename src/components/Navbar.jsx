@@ -19,9 +19,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Container } from "@mui/system";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function Navbar() {
   const navigate = useNavigate();

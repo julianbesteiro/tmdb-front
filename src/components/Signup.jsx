@@ -2,9 +2,7 @@ import useInput from "../hooks/useInput";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Button, TextField } from "@mui/material";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 const Signup = () => {
   const navigate = useNavigate();

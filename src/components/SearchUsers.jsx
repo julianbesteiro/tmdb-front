@@ -3,9 +3,7 @@ import useInput from "../hooks/useInput";
 import { useState } from "react";
 import Users from "../commons/Users";
 import { useSelector } from "react-redux";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function SearchUsers() {
   const search = useInput();

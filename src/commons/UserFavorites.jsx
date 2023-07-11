@@ -3,9 +3,7 @@ import { useParams } from "react-router";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-require("dotenv").config();
-
-const url = process.env.URL;
+const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function UserFavorites() {
   const { username } = useParams();
