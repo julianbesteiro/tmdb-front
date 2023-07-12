@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedInUser, setType } from "../store/user";
+import { setLoggedInUser } from "../store/user";
+import { setType } from "../store/content";
 import { useEffect, useState } from "react";
 
 import {
