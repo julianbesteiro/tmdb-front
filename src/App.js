@@ -14,7 +14,7 @@ import FavoritesList from "./components/FavoritesList";
 import Content from "./components/Content";
 
 function App() {
-  const content = useSelector((state) => state.content);
+  const content = useSelector((state) => state.content.content);
   const user = useSelector((state) => state.user);
 
   return (
