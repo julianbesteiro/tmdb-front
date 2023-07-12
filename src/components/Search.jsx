@@ -41,8 +41,10 @@ function Search() {
     if (type !== typeFromState) {
       dispatch(setType(type));
       dispatch(setContent([]));
+      console.log("hola", search);
+      search.value = "";
     }
-  }, []);
+  }, [type]);
 
   return (
     <>
