@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedInUser } from "../store/user";
+import { setLoggedInUser, setType } from "../store/user";
 import { useEffect, useState } from "react";
+
 import {
   AppBar,
   Box,
@@ -72,6 +73,10 @@ function Navbar() {
     setDrawerOpen(false);
   };
 
+  const handleSearchClick = () => {
+    dispatch(setType(""));
+  };
+
   return (
     <>
       <AppBar position="static" sx={{ height: "20%" }}>
@@ -126,6 +131,7 @@ function Navbar() {
             noWrap
             component="a"
             href="/search/movie"
+            onClick={handleSearchClick}
             color="white"
             sx={{
               mr: 2,
@@ -146,6 +152,7 @@ function Navbar() {
             noWrap
             component="a"
             href="/search/tv"
+            onClick={handleSearchClick}
             color="white"
             sx={{
               mr: 2,
@@ -335,7 +342,10 @@ function Navbar() {
             button
             component={Link}
             to="/search/movie"
-            onClick={handleSelection}
+            onClick={() => {
+              handleSelection();
+              handleSearchClick();
+            }}
           >
             <ListItemText primary="Search Movies" />
           </ListItem>
@@ -343,7 +353,10 @@ function Navbar() {
             button
             component={Link}
             to="/search/tv"
-            onClick={handleSelection}
+            onClick={() => {
+              handleSelection();
+              handleSearchClick();
+            }}
           >
             <ListItemText primary="Search TV Shows" />
           </ListItem>
