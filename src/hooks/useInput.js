@@ -7,7 +7,12 @@ function useInput() {
     setValue(event.target.value);
   };
 
-  return { value, onChange };
+  const clearInput = () => {
+    setValue("");
+    console.log("chau");
+  };
+
+  return { value, onChange, clearInput };
 }
 
 export default useInput;

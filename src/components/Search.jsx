@@ -11,6 +11,7 @@ const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function Search() {
   const search = useInput();
+
   const dispatch = useDispatch();
   const content = useSelector((state) => state.content.content);
   const typeFromState = useSelector((state) => state.content.type);
@@ -41,8 +42,8 @@ function Search() {
     if (type !== typeFromState) {
       dispatch(setType(type));
       dispatch(setContent([]));
-      console.log("hola", search);
-      search.value = "";
+      search.clearInput();
+      setSearchMade(false);
     }
   }, [type]);
 
