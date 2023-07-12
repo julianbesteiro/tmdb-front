@@ -55,7 +55,7 @@ function Navbar() {
 
   useEffect(() => {
     axios
-      .get(
+      .post(
         `${url}/api/me`,
         { token: localStorage.getItem("token") },
         { withCredentials: true, credentials: "include" }
