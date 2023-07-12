@@ -2,8 +2,11 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 
 export const setContent = createAction("SET_CONTENT");
 
-const initialState = [];
+export const setType = createAction("SET_TYPE");
+
+const initialState = { content: [], type: "" };
 
 export default createReducer(initialState, {
-  [setContent]: (state, action) => action.payload,
+  [setContent]: (state, action) => (state.content = action.payload),
+  [setType]: (state, action) => (state.type = action.payload),
 });

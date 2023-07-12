@@ -85,6 +85,8 @@ const Card = ({ content, user }) => {
         setUniqueSelectedContent(res.data);
       })
       .catch((error) => console.log(error));
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (

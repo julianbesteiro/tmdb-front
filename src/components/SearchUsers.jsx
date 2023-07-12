@@ -17,7 +17,7 @@ function SearchUsers() {
       return;
     } else {
       axios
-        .get(`${url}/api/users/${search.value}`, {
+        .get(`${url}/api/users/${search.value.toLowerCase()}`, {
           withCredentials: true,
           credentials: "include",
         })
