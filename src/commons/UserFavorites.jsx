@@ -9,6 +9,7 @@ function UserFavorites() {
   const { username } = useParams();
 
   const [favoritesPerUser, setFavoritesPerUser] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const movieFavoritesPerUser = favoritesPerUser.filter(
     (favorite) => favorite[0] === "m"
@@ -31,6 +32,7 @@ function UserFavorites() {
       })
       .then((favorites) => {
         setFavoritesPerUser(favorites.data);
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -39,7 +41,9 @@ function UserFavorites() {
     <div style={{ margin: "20px" }}>
       <h2>{username}</h2>
       <h3>FAVORITE MOVIES:</h3>
-      {movieFavoritesPerUser.length === 0
+      {isLoading
+        ? "Loading..."
+        : movieFavoritesPerUser.length === 0
         ? "None"
         : movieFavoritesPerUser.map((favorite, i) => (
             <Link to={`/detail/movie/${favoritesFilteredToGetId(favorite)}`}>
@@ -47,7 +51,9 @@ function UserFavorites() {
             </Link>
           ))}
       <h3>FAVORITE TV SHOWS:</h3>
-      {tvShowsFavoritesPerUser.length === 0
+      {isLoading
+        ? "Loading..."
+        : tvShowsFavoritesPerUser.length === 0
         ? "None"
         : tvShowsFavoritesPerUser.map((favorite, i) => (
             <Link to={`/detail/tv/${favoritesFilteredToGetId(favorite)}`}>
