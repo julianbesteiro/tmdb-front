@@ -35,6 +35,8 @@ function App() {
       .catch(() => console.error("You are not logged in"));
   }, [token]);
 
+  console.log("us", user);
+
   return (
     <Layout>
       <Routes>
