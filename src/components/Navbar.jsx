@@ -20,7 +20,6 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Container } from "@mui/system";
 const url = "https://tmdb-back-end-02eo.onrender.com";
 
 function Navbar() {
@@ -31,8 +30,6 @@ function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const userToDisplay = loggedInUser.user;
-
-  console.log("us", loggedInUser);
 
   const handleClick = () => {
     setDrawerOpen(false);
