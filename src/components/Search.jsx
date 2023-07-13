@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 
-const url = "https://tmdb-back-end-02eo.onrender.com";
-
 function Search() {
   const search = useInput();
 
@@ -21,7 +19,6 @@ function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchMade(true);
 
     axios
       .get(
@@ -34,6 +31,7 @@ function Search() {
       })
       .then((content) => {
         dispatch(setContent(content));
+        setSearchMade(true);
       })
       .catch((error) => console.log(error));
   };
