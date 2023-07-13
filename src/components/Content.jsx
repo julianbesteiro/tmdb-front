@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Content.css";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 
 function Content() {
   const [popularMovies, setPopularMovies] = useState([]);

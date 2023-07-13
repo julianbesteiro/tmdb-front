@@ -27,7 +27,7 @@ const Login = () => {
       .then((res) => {
         console.log("User logged in", res.data.userFront);
         localStorage.setItem("token", res.data.token);
-        dispatch(setLoggedInUser(res.data));
+        dispatch(setLoggedInUser(res.data.userFront));
         navigate("/");
       })
       .catch((err) => {

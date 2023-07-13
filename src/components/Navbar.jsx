@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoggedInUser } from "../store/user";
 import { setType } from "../store/content";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
   AppBar,
@@ -27,11 +27,12 @@ function Navbar() {
   const navigate = useNavigate();
   const loggedInUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const userToDisplay = loggedInUser.user;
+
+  console.log("us", loggedInUser);
 
   const handleClick = () => {
     setDrawerOpen(false);
@@ -54,17 +55,6 @@ function Navbar() {
       })
       .catch((err) => console.log(err));
   };
-
-  useEffect(() => {
-    axios
-      .post(
-        `${url}/api/me`,
-        { token: localStorage.getItem("token") },
-        { withCredentials: true, credentials: "include" }
-      )
-      .then((res) => dispatch(setLoggedInUser(res.data)))
-      .catch(() => console.error("You are not logged in"));
-  }, [token]);
 
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
