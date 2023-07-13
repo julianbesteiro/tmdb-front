@@ -11,13 +11,6 @@ function UserFavorites() {
   const [favoritesPerUser, setFavoritesPerUser] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const movieFavoritesPerUser = favoritesPerUser.filter(
-    (favorite) => favorite[0] === "m"
-  );
-  const tvShowsFavoritesPerUser = favoritesPerUser.filter(
-    (favorite) => favorite[0] === "t"
-  );
-
   const favoritesFilteredToGetId = (fav) => {
     let splitted = fav.split("(ID ")[1];
     let length = splitted.length - 1;
@@ -43,23 +36,29 @@ function UserFavorites() {
       <h3>FAVORITE MOVIES:</h3>
       {isLoading
         ? "Loading..."
-        : movieFavoritesPerUser.length === 0
+        : favoritesPerUser.filter((favorite) => favorite[0] === "m").length ===
+          0
         ? "None"
-        : movieFavoritesPerUser.map((favorite, i) => (
-            <Link to={`/detail/movie/${favoritesFilteredToGetId(favorite)}`}>
-              <p key={i}>{favorite.slice(1)}</p>
-            </Link>
-          ))}
+        : favoritesPerUser
+            .filter((favorite) => favorite[0] === "m")
+            .map((favorite, i) => (
+              <Link to={`/detail/movie/${favoritesFilteredToGetId(favorite)}`}>
+                <p key={i}>{favorite.slice(1)}</p>
+              </Link>
+            ))}
       <h3>FAVORITE TV SHOWS:</h3>
       {isLoading
         ? "Loading..."
-        : tvShowsFavoritesPerUser.length === 0
+        : favoritesPerUser.filter((favorite) => favorite[0] === "t").length ===
+          0
         ? "None"
-        : tvShowsFavoritesPerUser.map((favorite, i) => (
-            <Link to={`/detail/tv/${favoritesFilteredToGetId(favorite)}`}>
-              <p key={i}>{favorite.slice(1)}</p>
-            </Link>
-          ))}
+        : favoritesPerUser
+            .filter((favorite) => favorite[0] === "t")
+            .map((favorite, i) => (
+              <Link to={`/detail/tv/${favoritesFilteredToGetId(favorite)}`}>
+                <p key={i}>{favorite.slice(1)}</p>
+              </Link>
+            ))}
     </div>
   );
 }
